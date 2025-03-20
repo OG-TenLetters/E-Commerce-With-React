@@ -1,6 +1,14 @@
 import React from "react";
 
-const Cart = ({ cart }) => {
+const Cart = ({ cart, changeQuantity }) => {
+  const total = () => {
+    let price = 0;
+    cart.forEach(item => {
+     price+= (item.salePrice || item.originalPrice).toFixed(2)
+    })
+    return price;
+  }
+
   return (
     <div>
       <div id="books__body">
@@ -17,44 +25,68 @@ const Cart = ({ cart }) => {
                   <span className="cart__total">Price</span>
                 </div>
                 <div className="cart__body">
-                  <div className="cart__item">
-                    <div className="cart__book">
-                      <img
-                        className="cart__book--img"
-                        src="https://m.media-amazon.com/images/I/61mIq2iJUXL._AC_UF1000,1000_QL80_.jpg"
-                        alt=""
-                      />
-                      <div className="cart__book--info">
-                        <span className="cart__book--title">
-                          Crack the coding Interview
-                        </span>
-                        <span className="cart__book--price">$10.00</span>
-                        <button className="cart__book--remove">Remove</button> 
+                  {cart.map((book) => {
+                    return (
+                      <div className="cart__item">
+                        <div className="cart__book">
+                          <img
+                            className="cart__book--img"
+                            src={book.url}
+                            alt=""
+                          />
+                          <div className="cart__book--info">
+                            <span className="cart__book--title">
+                              {book.title}
+                            </span>
+                            <span className="cart__book--price">
+                              ${(book.salePrice || book.originalPrice).toFixed(2)}
+                            </span>
+                            <button className="cart__book--remove">
+                              Remove
+                            </button>
+                          </div>
+                        </div>
+                        <div className="cart__quantity">
+                          <input
+                            type="number"
+                            min={0}
+                            max={99}
+                            className="cart__input"
+                            value={book.quantity}
+                            onChange={(event) => changeQuantity(book, event.target.value)}
+                          />
+                        </div>
+                        <div className="cart__total">$
+                          {
+                            ((book.salePrice || book.originalPricePrice ) * (book.quantity)).toFixed(2)
+                          }
+                        </div>
                       </div>
-                    </div>
-                    <div className="cart__quantity">
-                        <input type="number" min={0} max={99} className="cart__input" />
-                    </div>
-                    <div className="cart__total">
-                        $10.00
-                    </div>
-                  </div>
+                    );
+                  })}
                 </div>
               </div>
               <div className="total">
                 <div className="total__item total__sub-total">
-                    <span>Subtotal</span>
-                    <span>$9.00</span>
+                  <span>Subtotal</span>
+                  <span>$9.00</span>
                 </div>
                 <div className="total__item total__tax">
-                    <span>Tax</span>
-                    <span>$1.00</span>
+                  <span>Tax</span>
+                  <span>$1.00</span>
                 </div>
                 <div className="total__item total__price">
-                    <span>Tax</span>
-                    <span>$10.00</span>
+                  <span>Total</span>
+                  <span>${total()}</span>
                 </div>
-                <button className="btn btn__checkout no-cursor" onClick={() => alert(`Yeahh... I haven't gotten around to that yet :'(`)}>Proceed to Checkout</button>
+                <button
+                  className="btn btn__checkout no-cursor"
+                  onClick={() =>
+                    alert(`Yeahh... I haven't gotten around to that yet :'(`)
+                  }
+                >
+                  Proceed to Checkout
+                </button>
               </div>
             </div>
           </div>
