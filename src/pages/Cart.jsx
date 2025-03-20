@@ -1,6 +1,6 @@
 import React from "react";
 
-const Cart = () => {
+const Cart = ({ cart }) => {
   return (
     <div>
       <div id="books__body">
