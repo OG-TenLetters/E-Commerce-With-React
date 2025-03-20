@@ -22,6 +22,23 @@ function App() {
       )
     );
   }
+  function removeBookFromCart(item) {
+    setCart(cart.filter(book => book.id !== item.id ))
+    // cart.map((item) => {
+    //   if (item.id === cart.id) {
+    //     remove(cart)
+    //   }
+    // } )
+  }
+
+  function numberOfItems () {
+    let counter = 0
+    cart.forEach(item => {
+      counter += item.quantity
+    })
+    return counter
+  }
+
   useEffect(() => {
     console.log(cart);
   }, [cart]);
@@ -29,7 +46,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Nav />
+        <Nav numberOfItems={numberOfItems()} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/books" element={<Books books={books} />} />
@@ -42,7 +59,7 @@ function App() {
           <Route
             path="/cart"
             element={
-              <Cart books={books} cart={cart} changeQuantity={changeQuantity} />
+              <Cart books={books} cart={cart} changeQuantity={changeQuantity} removeBookFromCart={removeBookFromCart} />
             }
           />
         </Routes>
