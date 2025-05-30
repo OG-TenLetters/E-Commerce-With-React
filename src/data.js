@@ -83,14 +83,6 @@ export const books = [
   },
   {
     id: 11,
-    title: "How to Win Friends & Influence People",
-    url: "https://m.media-amazon.com/images/I/71vK0WVQ4rL._AC_UF1000,1000_QL80_.jpg",
-    originalPrice: 30,
-    salePrice: 20,
-    rating: 5,
-  },
-  {
-    id: 12,
     title: "Mastery",
     url: "https://m.media-amazon.com/images/I/51V3121nmkL._AC_UF1000,1000_QL80_.jpg",
     originalPrice: 30,
