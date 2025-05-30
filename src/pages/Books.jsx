@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { data } from "react-router-dom";
 import Book from "../components/ui/Book";
-// import { books } from "../data"
+
 
 const Books = ({ books: intitialBooks }) => {
   const [books, setBooks] = useState(intitialBooks);
+  
+  window.scrollTo({top: 0})
 
   function filterBooks(filter) {
     console.log(filter);

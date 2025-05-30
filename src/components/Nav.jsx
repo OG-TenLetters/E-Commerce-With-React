@@ -11,7 +11,7 @@ const Nav = ({numberOfItems}) => {
     document.body.classList.remove("menu--open")
   }
   return (
-    <div>
+    <>
       <nav className="nav__container">
         <Link to="/">
           <img src={LibraryLogo} alt="" className="logo" />
@@ -23,7 +23,7 @@ const Nav = ({numberOfItems}) => {
             </Link>
           </li>
           <li className="nav__list">
-            <Link to="/books" className="nav__link">
+            <Link onCl to="/books" className="nav__link">
               Books
             </Link>
           </li>
@@ -46,24 +46,24 @@ const Nav = ({numberOfItems}) => {
             </button>
             <ul className="menu__links">
                 <li className="menu__list">
-                    <Link to="/" className="menu__link">
+                    <Link onClick={closeMenu} to="/" className="menu__link">
                         Home
                     </Link>
                 </li>
                 <li className="menu__list">
-                    <Link to="/books" className="menu__link">
+                    <Link onClick={closeMenu} to="/books" className="menu__link">
                         Books
                     </Link>
                 </li>
                 <li className="menu__list">
-                    <Link to="/cart" className="menu__link">
+                    <Link onClick={closeMenu} to="/cart" className="menu__link">
                         Cart
                     </Link>
                 </li>
             </ul>
         </div>
       </nav>
-    </div>
+    </>
   );
 };
 

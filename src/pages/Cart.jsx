@@ -3,6 +3,8 @@ import EmptyCart from "../assets/empty_cart.svg";
 import { Link } from "react-router-dom";
 
 const Cart = ({ cart, changeQuantity, removeBookFromCart }) => {
+  
+  window.scrollTo({top: 0})
   const total = () => {
     let price = 0;
     cart.forEach((item) => {

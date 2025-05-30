@@ -8,6 +8,10 @@ import Book from "../components/ui/Book";
 const BookInfo = ({ books, addToCart, cart }) => {
   const { id } = useParams();
   const book = books.find((book) => +book.id === +id);
+
+  
+  window.scrollTo({top: 0})
+
   function addBookToCart(book) {
     addToCart(book);
   }
